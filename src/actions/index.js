@@ -11,10 +11,8 @@ export const FETCH_WEATHER = 'FETCH_WEATHER'
 export function fetchWeather(city) {
     //Select book is an action creator
     const url = `${ROOT_URL}&q=${city},es`
-    console.log('url: ',url)
 
     const request = axios.get(url);
-
     return {
         type: FETCH_WEATHER,
         payload: request
