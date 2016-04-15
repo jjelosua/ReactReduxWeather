@@ -9,13 +9,13 @@ class WeatherList extends Component {
         const name = cityData.city.name;
         const coord = cityData.city.coord;
         const temperatures = cityData.list.map((weather,i) => {
-            return {x: i, 
+            return {x: new Date(weather.dt_txt), 
             y: weather.main.temp}});
         const pressures = cityData.list.map((weather,i) => { 
-            return {x: i,
+            return {x: new Date(weather.dt_txt),
             y: weather.main.pressure}});
         const humidities = cityData.list.map((weather,i) => { 
-            return {x: i,
+            return {x: new Date(weather.dt_txt),
             y: weather.main.humidity}});
 
         return (
