@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
+import Chart from '../components/chart';
 
 class WeatherList extends Component {
     renderWeather(cityData) {
         const name = cityData.city.name;
+        const temperatures = cityData.list.map(weather => weather.main.temp);
+        const pressures = cityData.list.map(weather => weather.main.pressure);
+        const humidities = cityData.list.map(weather => weather.main.humidity);
+
         return (
-            <tr key={name} className='tr'>
-                <td className='td city'>{name}</td>
-                <td className='td graph temperature'>
-                    {cityData.list[0].main.temp}
+            <tr key={name}>
+                <td className='city'>{name}</td>
+                <td>
+                    <Chart data={temperatures} color='red' units='K' />
                 </td>
-                <td className='td graph pressure'>
-                    {cityData.list[0].main.pressure}
+                <td>
+                    <Chart data={pressures} color='green' units='hPa'/>
                 </td>
-                <td className='td graph humidity'>
-                    {cityData.list[0].main.humidity}
+                <td>
+                    <Chart data={humidities} color='blue' units='%'/>
                 </td>
             </tr>
         );
@@ -27,9 +31,9 @@ class WeatherList extends Component {
                 <thead>
                     <tr>
                         <th>City</th>
-                        <th>Temperature</th>
-                        <th>Pressure</th>
-                        <th>Humidity</th>
+                        <th>Temperature (K)</th>
+                        <th>Pressure (hPa)</th>
+                        <th>Humidity (%)</th>
                     </tr>
                 </thead>
                 <tbody>

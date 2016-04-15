@@ -1,0 +1,12 @@
+.input-group {
+    margin: 20px 0px;
+}
+
+td, th {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+.units {
+    margin-left: 2px;
+}
